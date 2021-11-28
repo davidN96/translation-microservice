@@ -1,17 +1,14 @@
 import { MessagePattern, Payload } from '@nestjs/microservices';
+import { TranslateMessage } from './App.dto';
 import { Controller } from '@nestjs/common';
 import { AppService } from './App.service';
-
-interface HelloPayload {
-  message: string;
-}
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @MessagePattern('sayHello')
-  public getHello(@Payload() data: HelloPayload): string {
-    return this.appService.getHello(data.message);
+  @MessagePattern('translate')
+  public async translate(@Payload() data: TranslateMessage): Promise<string> {
+    return await this.appService.translate(data);
   }
 }
