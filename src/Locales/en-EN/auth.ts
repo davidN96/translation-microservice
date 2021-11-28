@@ -1,11 +1,15 @@
-import { BaseTranslation } from 'src/Utils/Types';
+import { t } from 'src/Utils/Translation';
+import { BaseTranslation, LanguageScope } from 'src/Utils/Types';
 
 const translations: BaseTranslation[] = [
-  {
-    key: 'auth.registered',
-    value: 'Your account has been successfully registered',
-  },
-  { key: 'auth.logged', value: 'Successfully logged in' },
+  t('registered', 'Your account has been registered'),
+  t('logged-in', 'Successfully logged in'),
+  t('logged-out', 'Successfully logged out'),
+  t('fail', 'Could not log in'),
 ];
-
-export default translations;
+export default translations.map(
+  (translation: BaseTranslation): BaseTranslation => ({
+    ...translation,
+    key: `${LanguageScope.Auth}.${translation.key}`,
+  }),
+);

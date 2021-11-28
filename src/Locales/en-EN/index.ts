@@ -6,7 +6,7 @@ const translations: BaseTranslation[] = [...Auth];
 
 export default translations.map(
   (translation: BaseTranslation): Translation => ({
-    language: Languages.EN,
     ...translation,
+    language: Languages.EN,
   }),
 );
