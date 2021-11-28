@@ -5,16 +5,8 @@ services:
     image: docker.io/bitnami/mongodb:5.0
     container_name: $MONGODB_CONTAINER_NAME
     restart: always
-    volumes:
-      - '${PWD}/data:/bitnami/mongodb'
     env_file:
       - .env
-    environment:
-      # - MONGODB_ROOT_PASSWORD=$MONGODB_ROOT_PASSWORD
-      # - MONGODB_ROOT_USER=$MONGODB_ROOT_USER
-      - MONGODB_USERNAME=$MONGODB_USERNAME
-      - MONGODB_PASSWORD=$MONGODB_PASSWORD
-      - MONGODB_DATABASE=$MONGODB_DATABASE
     ports:
       - 9999:27017
 
