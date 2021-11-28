@@ -1,10 +1,12 @@
 import { TranslationSeedModule } from './Seeds/Translation/Translation.module';
-import { TranslationProvider } from 'models/Translation.provider';
+import { TranslationProvider } from 'models/Translation/Translation.provider';
+import { IssueProvider } from 'models/Issue/Issue.provider';
 import { DatabaseProvider } from './Database.provider';
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
+
+@Global()
 @Module({
-  imports: [DatabaseProvider, TranslationProvider, TranslationSeedModule],
-  providers: [],
-  exports: [TranslationProvider, DatabaseProvider, TranslationSeedModule],
+  imports: [TranslationSeedModule, TranslationProvider, DatabaseProvider, IssueProvider],
+  exports: [TranslationSeedModule, TranslationProvider, DatabaseProvider, IssueProvider],
 })
 export class DatabaseModule {}

@@ -1,4 +1,4 @@
-import { Translation } from 'models/Translation.model';
+import { Translation } from 'models/Translation/Translation.model';
 import { BaseTranslation, Languages } from 'src/Utils/Types';
 import Auth from './auth';
 

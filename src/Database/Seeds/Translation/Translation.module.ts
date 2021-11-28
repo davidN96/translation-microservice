@@ -1,8 +1,7 @@
+import { TranslationProvider } from 'models/Translation/Translation.provider';
+import { TranslationSeed } from './Translation.seed';
 import { CommandModule } from 'nestjs-command';
 import { Module } from '@nestjs/common';
-
-import { TranslationSeed } from './Translation.seed';
-import { TranslationProvider } from 'models/Translation.provider';
 
 @Module({
   imports: [CommandModule, TranslationProvider],

@@ -1,4 +1,4 @@
-import { Translation, TRANSLATION } from 'models/Translation.model';
+import { Translation, TRANSLATION } from 'models/Translation/Translation.model';
 import { Injectable, Logger } from '@nestjs/common';
 import { Providers } from 'src/Utils/Constants';
 import { InjectModel } from '@nestjs/mongoose';
