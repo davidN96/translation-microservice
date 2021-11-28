@@ -1,6 +1,6 @@
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { Controller } from '@nestjs/common';
-import { AppService } from './app.service';
+import { AppService } from './App.service';
 
 interface HelloPayload {
   message: string;

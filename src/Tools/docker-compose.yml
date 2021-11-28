@@ -1,17 +1,23 @@
-version: '3'
-services:
-  mongo:
-    image: mongo
-    container_name: database
-    restart: always
-    env_file:
-      - .env
+version: '2'
 
-  mongo-express:
-    image: mongo-express
-    container_name: database-gui
+services:
+  mongodb:
+    image: docker.io/bitnami/mongodb:5.0
+    container_name: $MONGODB_CONTAINER_NAME
     restart: always
-    ports:
-      - 8081:8081
+    volumes:
+      - '${PWD}/data:/bitnami/mongodb'
     env_file:
       - .env
+    environment:
+      # - MONGODB_ROOT_PASSWORD=$MONGODB_ROOT_PASSWORD
+      # - MONGODB_ROOT_USER=$MONGODB_ROOT_USER
+      - MONGODB_USERNAME=$MONGODB_USERNAME
+      - MONGODB_PASSWORD=$MONGODB_PASSWORD
+      - MONGODB_DATABASE=$MONGODB_DATABASE
+    ports:
+      - 9999:27017
+
+volumes:
+  data:
+    driver: local
