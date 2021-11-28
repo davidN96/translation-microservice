@@ -10,7 +10,7 @@ export class Translation {
   public key: string;
 
   @Prop({ required: true, type: String })
-  public language: number;
+  public language: string;
 
   @Prop({ type: String })
   public value: string;
