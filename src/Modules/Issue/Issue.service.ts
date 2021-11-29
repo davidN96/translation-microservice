@@ -4,7 +4,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as DTO from './Issue.dto';
 import { Model } from 'mongoose';
-import { usePager } from 'src/Utils/List';
+import { useOptionalFilters, usePager } from 'src/Utils/List';
 
 @Injectable()
 export class IssueService {
@@ -14,10 +14,11 @@ export class IssueService {
     return await this.Issue.findOne({ message });
   }
 
-  public async getAllIssues(pager: DTO.Pager): Promise<Issue[]> {
+  public async getAllIssues({ pager, type }: DTO.ListIssuesFilters): Promise<Issue[]> {
+    const filters = useOptionalFilters({ type });
     const { skip, size } = usePager(pager);
 
-    return this.Issue.find().skip(skip).limit(size);
+    return this.Issue.find(filters).skip(skip).limit(size);
   }
 
   private async createMissingTranslationIssue(message: string): Promise<void> {

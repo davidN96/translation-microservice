@@ -10,8 +10,8 @@ export class IssueController {
   constructor(private readonly Issue: IssueService) {}
 
   @MessagePattern(Patterns.ListIssues)
-  public async listIssues(@Payload() pager: DTO.Pager): Promise<Issue[]> {
-    return await this.Issue.getAllIssues(pager);
+  public async listIssues(@Payload() filters: DTO.ListIssuesFilters): Promise<Issue[]> {
+    return await this.Issue.getAllIssues(filters);
   }
 
   @EventPattern(Patterns.ReportIssue)
