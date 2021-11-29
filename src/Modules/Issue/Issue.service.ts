@@ -15,10 +15,9 @@ export class IssueService {
   }
 
   public async getAllIssues({ pager, type }: DTO.ListIssuesFilters): Promise<Issue[]> {
-    const filters = useOptionalFilters({ type });
     const { skip, size } = usePager(pager);
 
-    return this.Issue.find(filters).skip(skip).limit(size);
+    return this.Issue.find(useOptionalFilters({ type })).skip(skip).limit(size);
   }
 
   private async createMissingTranslationIssue(message: string): Promise<void> {

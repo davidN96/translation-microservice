@@ -1,5 +1,6 @@
 import { Translation, TRANSLATION } from 'models/Translation/Translation.model';
 import { IssueService } from 'src/Modules/Issue/Issue.service';
+import { useOptionalFilters, usePager } from 'src/Utils/List';
 import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
 import * as DTO from './Translation.dto';
@@ -21,5 +22,11 @@ export class TranslationService {
     await this.Translation.findOneAndUpdate({ key, language }, { key, language, value }).catch(() =>
       this.Issue.reportMissingTranslation({ key, language }),
     );
+  }
+
+  public async listTranslations({ filters, pager }: DTO.ListFilters): Promise<Translation[]> {
+    const { skip, size } = usePager(pager);
+
+    return await this.Translation.find(useOptionalFilters(filters)).skip(skip).limit(size);
   }
 }
