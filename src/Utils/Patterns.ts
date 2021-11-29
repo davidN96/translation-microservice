@@ -1,7 +1,8 @@
 export enum Patterns {
   Translate = 'translate-message',
-  Overwrite = 'overwrite-translation',
+  AddTranslation = 'add-translation',
   ListTranslations = 'list-translations',
   ListIssues = 'list-translations-issues',
   ReportIssue = 'report-translation-issue',
+  OverwriteTranslation = 'overwrite-translation',
 }

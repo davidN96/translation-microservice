@@ -20,8 +20,13 @@ export class TranslationController {
     return await this.Translation.listTranslations(filters);
   }
 
-  @EventPattern(Patterns.Overwrite)
+  @EventPattern(Patterns.OverwriteTranslation)
   public async overwrite(@Payload() data: DTO.TranslationOverwrite): Promise<void> {
     return await this.Translation.overwrite(data);
+  }
+
+  @EventPattern(Patterns.AddTranslation)
+  public async addTranslation(@Payload() data: Translation): Promise<void> {
+    return await this.Translation.create(data);
   }
 }

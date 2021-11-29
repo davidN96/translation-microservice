@@ -11,6 +11,10 @@ import { Pagination } from 'src/Utils/Types';
 export class TranslationService {
   constructor(@InjectModel(TRANSLATION) private readonly Translation: Model<Translation>, private readonly Issue: IssueService) {}
 
+  public async create(translation: Translation): Promise<void> {
+    await this.Translation.create(translation);
+  }
+
   public async translate(message: DTO.TranslateMessage): Promise<string | null> {
     const translation = await this.Translation.findOne({ ...message });
 
