@@ -2,6 +2,7 @@ import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices';
 import { Issue } from 'models/Issue/Issue.model';
 import { IssueService } from './Issue.service';
 import { Patterns } from 'src/Utils/Patterns';
+import { Pagination } from 'src/Utils/Types';
 import { Controller } from '@nestjs/common';
 import * as DTO from './Issue.dto';
 
@@ -10,7 +11,7 @@ export class IssueController {
   constructor(private readonly Issue: IssueService) {}
 
   @MessagePattern(Patterns.ListIssues)
-  public async listIssues(@Payload() filters: DTO.ListIssuesFilters): Promise<Issue[]> {
+  public async listIssues(@Payload() filters: DTO.ListIssuesFilters): Promise<Pagination<Issue>> {
     return await this.Issue.getAllIssues(filters);
   }
 
