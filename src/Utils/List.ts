@@ -1,4 +1,4 @@
-import { Pager } from 'src/Modules/Issue/Issue.dto';
+import { Pager } from 'src/Utils/Types';
 import { PagerData } from './Types';
 import * as _ from 'lodash';
 

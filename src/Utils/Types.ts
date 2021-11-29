@@ -16,3 +16,8 @@ export interface PagerData {
   size: number;
   skip: number;
 }
+
+export interface Pager {
+  index: number;
+  size: number;
+}

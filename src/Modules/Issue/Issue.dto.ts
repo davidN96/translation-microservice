@@ -1,9 +1,5 @@
 import { IssueType } from 'models/Issue/Issue.enums';
-
-export interface Pager {
-  index: number;
-  size: number;
-}
+import { Pager } from 'src/Utils/Types';
 
 export interface ListIssuesFilters {
   type: IssueType;
