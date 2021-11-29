@@ -1,14 +1,20 @@
 <table>
   <tr>
-    <td width="80%">
+    <td width="50%">
       <h1 class="title">Translation Microservice</h1>
     </td>
-    <td width="20%">
+    <td width="15%">
       <div>
         <a href="http://nestjs.com/" target="blank">
-          <img src="https://nestjs.com/img/logo_text.svg" width="200" alt="Nest Logo" />
+          <img src="https://nestjs.com/img/logo_text.svg" width="300" alt="Nest Logo" />
         </a>
       </div>
+    </td>
+    <td width="15%" align="center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" width="50" alt="TS" />
+    </td>
+      <td width="20%">
+      <img src="https://www.fanaticalcode.com/blog/wp-content/uploads/2010/12/logo-mongodb-onwhite.png" width="200" alt="TS" />
     </td>
   </tr>
 </table>
