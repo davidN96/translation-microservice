@@ -1,5 +1,4 @@
-export interface ParsedIssue {
-  message: string;
-  type: string;
-  id: string;
+export interface Pager {
+  index: number;
+  size: number;
 }

@@ -1,16 +1,17 @@
-import { EventPattern, MessagePattern } from '@nestjs/microservices';
+import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices';
 import { Issue } from 'models/Issue/Issue.model';
 import { IssueService } from './Issue.service';
 import { Patterns } from 'src/Utils/Patterns';
 import { Controller } from '@nestjs/common';
+import * as DTO from './Issue.dto';
 
 @Controller()
 export class IssueController {
   constructor(private readonly Issue: IssueService) {}
 
   @MessagePattern(Patterns.ListIssues)
-  public async listIssues(): Promise<Issue[]> {
-    return await this.Issue.getAllIssues();
+  public async listIssues(@Payload() pager: DTO.Pager): Promise<Issue[]> {
+    return await this.Issue.getAllIssues(pager);
   }
 
   @EventPattern(Patterns.ReportIssue)

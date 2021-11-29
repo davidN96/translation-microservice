@@ -1,9 +1,10 @@
 import { TranslateMessage } from 'src/Modules/Translation/Translation.dto';
 import { ISSUE, Issue } from 'models/Issue/Issue.model';
-import { InjectModel } from '@nestjs/mongoose';
 import { Injectable, Logger } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import * as DTO from './Issue.dto';
 import { Model } from 'mongoose';
+import { usePager } from 'src/Utils/List';
 
 @Injectable()
 export class IssueService {
@@ -13,8 +14,10 @@ export class IssueService {
     return await this.Issue.findOne({ message });
   }
 
-  public async getAllIssues(): Promise<DTO.ParsedIssue[]> {
-    return this.Issue.find();
+  public async getAllIssues(pager: DTO.Pager): Promise<Issue[]> {
+    const { skip, size } = usePager(pager);
+
+    return this.Issue.find().skip(skip).limit(size);
   }
 
   private async createMissingTranslationIssue(message: string): Promise<void> {

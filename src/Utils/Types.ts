@@ -11,3 +11,8 @@ export enum Languages {
 export enum LanguageScope {
   Auth = 'auth',
 }
+
+export interface PagerData {
+  size: number;
+  skip: number;
+}
