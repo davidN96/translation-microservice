@@ -1,22 +1,17 @@
-<style>
-  .title {
-    color: #ed1543;
-    font-size: 34px !important;
-    font-weight: bold !important;
-  }
-
-  .info {
-    font-weight: bold !important;
-    color: #ed1543;
-  }
-</style>
-
-<div style="display: flex; align-items: center; justify-content: space-between;">
-  <h1 class="title">Translation Microservice</h1>
-  <a href="http://nestjs.com/" target="blank">
-    <img src="https://nestjs.com/img/logo_text.svg" width="200" alt="Nest Logo" />
-  </a>
-</div>
+<table>
+  <tr>
+    <td width="80%">
+      <h1 class="title">Translation Microservice</h1>
+    </td>
+    <td width="20%">
+      <div>
+        <a href="http://nestjs.com/" target="blank">
+          <img src="https://nestjs.com/img/logo_text.svg" width="200" alt="Nest Logo" />
+        </a>
+      </div>
+    </td>
+  </tr>
+</table>
 
 ## Description
 
@@ -27,13 +22,13 @@ This service provides you full messages customization by overriding.
 
 ## Microservice
 
-**Transport**: <span class="info">TCP</span>\
-**Port**: <span class="info">3333</span>
+**Transport**: **TCP**</span>**\
+**Port**: **3333**</span>**
 
 ## Database
 
-**Type**: <span class="info">MongoDB</span>\
-**Port**: <span class="info">9999</span>
+**Type**: **MongoDB**</span>**\
+**Port**: **9999**</span>**
 
 ---
 
