@@ -21,3 +21,9 @@ export interface Pager {
   index: number;
   size: number;
 }
+
+export interface Pagination<T> {
+  index: number;
+  total: number;
+  data: T[];
+}

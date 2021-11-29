@@ -1,10 +1,11 @@
 import { Translation, TRANSLATION } from 'models/Translation/Translation.model';
 import { IssueService } from 'src/Modules/Issue/Issue.service';
-import { useOptionalFilters, usePager } from 'src/Utils/List';
+import { useOptionalFilters, usePager, usePagination } from 'src/Utils/List';
 import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
 import * as DTO from './Translation.dto';
 import { Model } from 'mongoose';
+import { Pagination } from 'src/Utils/Types';
 
 @Injectable()
 export class TranslationService {
@@ -24,9 +25,11 @@ export class TranslationService {
     );
   }
 
-  public async listTranslations({ filters, pager }: DTO.ListFilters): Promise<Translation[]> {
+  public async listTranslations({ filters, pager }: DTO.ListFilters): Promise<Pagination<Translation>> {
     const { skip, size } = usePager(pager);
+    const data = await this.Translation.find(useOptionalFilters(filters)).skip(skip).limit(size);
+    const total = await this.Translation.countDocuments(useOptionalFilters(filters));
 
-    return await this.Translation.find(useOptionalFilters(filters)).skip(skip).limit(size);
+    return usePagination<Translation>(data, total, pager.index);
   }
 }

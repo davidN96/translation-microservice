@@ -4,6 +4,7 @@ import { TranslationService } from './Translation.service';
 import { Patterns } from 'src/Utils/Patterns';
 import { Controller } from '@nestjs/common';
 import * as DTO from './Translation.dto';
+import { Pagination } from 'src/Utils/Types';
 
 @Controller()
 export class TranslationController {
@@ -15,7 +16,7 @@ export class TranslationController {
   }
 
   @MessagePattern(Patterns.ListTranslations)
-  public async listTranslations(@Payload() filters: DTO.ListFilters): Promise<Translation[]> {
+  public async listTranslations(@Payload() filters: DTO.ListFilters): Promise<Pagination<Translation>> {
     return await this.Translation.listTranslations(filters);
   }
 
